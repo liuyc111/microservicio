@@ -32,7 +32,7 @@ services:
       - cs3
   helloNet:
     build: 
-      context: .
+      context: ./HelloDotnets
     container_name: hellonet
     image: lyctest/hellonet:1.0.0
     ports: 
@@ -41,3 +41,15 @@ services:
       - ./HelloDotnets/:/work
     depends_on:
       - cc1
+  helloNetB:
+    build: 
+      context: ./HelloDotnetsB
+    container_name: hellonetB
+    image: lyctest/hellonetb:1.0.0
+    ports: 
+      - 8003:8003
+    volumes:
+      - ./HelloDotnetsB/:/work
+    depends_on:
+      - cc1
+   
