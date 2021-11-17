@@ -1,0 +1,39 @@
+alive: cs1 172.20.0.2:8301
+alive: cs2 172.20.0.3:8301
+clock: 1
+alive: cs3 172.20.0.4:8301
+clock: 2
+alive: cc1 172.20.0.5:8301
+clock: 3
+event-clock: 1
+not-alive: cc1
+clock: 4
+alive: cs1 172.20.0.2:8301
+alive: cs3 172.20.0.3:8301
+alive: cs2 172.20.0.4:8301
+clock: 5
+alive: cc1 172.20.0.5:8301
+clock: 6
+event-clock: 2
+clock: 7
+not-alive: cc1
+clock: 8
+alive: cs1 172.20.0.2:8301
+alive: cs3 172.20.0.3:8301
+alive: cs2 172.20.0.4:8301
+clock: 9
+clock: 10
+alive: cc1 172.20.0.5:8301
+clock: 11
+event-clock: 3
+clock: 12
+not-alive: cc1
+alive: cs1 172.20.0.2:8301
+alive: cs3 172.20.0.4:8301
+alive: cs2 172.20.0.3:8301
+clock: 13
+clock: 14
+alive: cc1 172.20.0.5:8301
+clock: 15
+event-clock: 4
+event-clock: 5

@@ -1,0 +1,17 @@
+alive: cs2.dc1 172.20.0.3:8302
+alive: cs1.dc1 172.20.0.2:8302
+clock: 1
+alive: cs3.dc1 172.20.0.4:8302
+clock: 3
+alive: cs2.dc1 172.20.0.4:8302
+alive: cs3.dc1 172.20.0.3:8302
+alive: cs1.dc1 172.20.0.2:8302
+clock: 4
+alive: cs2.dc1 172.20.0.4:8302
+alive: cs3.dc1 172.20.0.3:8302
+alive: cs1.dc1 172.20.0.2:8302
+clock: 5
+alive: cs2.dc1 172.20.0.3:8302
+alive: cs3.dc1 172.20.0.4:8302
+alive: cs1.dc1 172.20.0.2:8302
+clock: 6

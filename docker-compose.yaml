@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  cs1: 
+    image: consul
+    command: agent -server -client=0.0.0.0 -bootstrap-expect=3 -node=cs1 -data-dir=/data
+    volumes:
+      - ./data/cs1:/data
+  cs2:
+    image: consul
+    command: agent -server -client=0.0.0.0 -retry-join=cs1 -node=cs2 -data-dir=/data
+    volumes:
+      - ./data/cs2:/data
+    depends_on:
+      - cs1
+  cs3:
+    image: consul
+    command: agent -server -client=0.0.0.0 -retry-join=cs1 -node=cs3 -data-dir=/data
+    volumes:
+      - ./data/cs3:/data
+    depends_on:
+      - cs1
+  cc1:
+    image: consul
+    command: agent -client=0.0.0.0 -retry-join=cs1 -ui -node=cc1 -data-dir=/data  
+    ports:
+      - 8500:8500
+    volumes:
+      - ./data/cc1:/data
+    depends_on:
+      - cs2
+      - cs3
+  helloNet:
+    build: 
+      context: .
+    container_name: hellonet
+    image: lyctest/hellonet:1.0.0
+    ports: 
+      - 8001:8001
+    volumes:
+      - ./HelloDotnets/:/work
+    depends_on:
+      - cc1
