@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  cs1: 
+  cs1:
     image: consul
     command: agent -server -client=0.0.0.0 -bootstrap-expect=3 -node=cs1 -data-dir=/data
     volumes:
@@ -22,7 +22,7 @@ services:
       - cs1
   cc1:
     image: consul
-    command: agent -client=0.0.0.0 -retry-join=cs1 -ui -node=cc1 -data-dir=/data  
+    command: agent -client=0.0.0.0 -retry-join=cs1 -ui -node=cc1 -data-dir=/data
     ports:
       - 8500:8500
     volumes:
@@ -31,25 +31,36 @@ services:
       - cs2
       - cs3
   helloNet:
-    build: 
+    build:
       context: ./HelloDotnets
     container_name: hellonet
     image: lyctest/hellonet:1.0.0
-    ports: 
+    ports:
       - 8002:8002
     volumes:
       - ./HelloDotnets/:/work
     depends_on:
       - cc1
   helloNetB:
-    build: 
+    build:
       context: ./HelloDotnetsB
     container_name: hellonetB
     image: lyctest/hellonetb:1.0.0
-    ports: 
+    ports:
       - 8003:8003
     volumes:
       - ./HelloDotnetsB/:/work
     depends_on:
       - cc1
-   
+  apigetway:
+    build:
+      context: ./ApiGateWay
+    container_name: apigetway
+    image: lyctest/apigetway:1.0.0
+    ports:
+      - 9600:9600
+    volumes:
+      - ./ApiGateWay/:/work
+    depends_on:
+      - helloNetB
+      - helloNet
